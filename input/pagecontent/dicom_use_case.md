@@ -1,14 +1,12 @@
 **TODO**
-Streamline storyboard based on SWF.b. add reference to SWF.b vol 1
 Clean up mapping:
-1. v2 to DICOM
-2. FHIR to DICOM (help from WG-20)
-3. Represent FHIR extensions in mapping tables as they would appear in Sushi
-4. Should these maps be exposed in other ways, in a resource or profile or a conceptmap? (i.e. "computable version", something more formal)
+1. FHIR to DICOM (help from WG-20)
+2. Represent FHIR extensions in mapping tables as they would appear in Sushi
+
 
 ### Introduction
 
-This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. In this case, there are three instances of Sex For Clinical Use (SFCU). First, the ordering physician provides instructions for interpreting lab values within a Sex for Clinical Use comment. In the second SFCU, a post-processing AI (Artifical Intelligence) application utilizes the Sex Assigned at Birth for the basis of reference values. Third, the radiologist determines the appropriate sex to use based on the patient's body composition for a Standard Uptake Value (SUV) calculation. A patient with EHR Sex for Clinical Use (SFCU) of “female” and a EHR Gender Identity of “male” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered. The DICOM (Digital Imaging and COmmunications in Medicine) Standard attributes in this use case are not, at time of publication of this Implementation Guide, normative, and details in DICOM are still being defined. Readers interested in participating in development of DICOM Sex and Gender encoding, please contact the [DICOM Secretariat](mailto:dicom@dicomstandard.org).
+This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. In this case, there are three instances of Sex Parameters for Clinical Use (SPCU). First, the ordering physician provides instructions for interpreting lab values within a Sex Parameters for Clinical Use comment. In the second SPCU, a post-processing AI (Artificial  Intelligence) application utilizes the Sex at Birth Sequence for the basis of reference values. Third, the radiologist determines the appropriate sex to use based on the patient's body composition for a Standard Uptake Value (SUV) calculation. A patient with EHR Sex Parameters for Clinical Use (SPCU) of “female” and a EHR Gender Identity of “male” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered. The DICOM (Digital Imaging and COmmunications in Medicine) Standard attributes in this use case are not, at time of publication of this Implementation Guide, normative, and details in DICOM are still being defined. Readers interested in participating in development of DICOM Sex and Gender encoding, please contact the [DICOM Secretariat](mailto:dicom@dicomstandard.org).
 
 ### Actors:
 
@@ -76,7 +74,10 @@ Use case covers admission, patient prep, examination, recovery, post processing 
 
 ### Workflow/Storyboard:
 
-![](gh-dicom-2.svg)
+Note: IHE transactions are noted in brackets
+<div>
+{%include gh-dicom-2.svg%}
+</div>
 
 Figure 1 Workflow Storyboard
 
@@ -124,9 +125,9 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 7.  The technologist confers with the radiologist to discuss acceptable lab values for safe contrast administration, given the Sex Comment, as well as the patient’s GFR, bun and creatine.
 
-8. The radiologist notes that the provided SFCU of Female, is not consistent with the SFCU Comment and calls the ordering physician to confirm.
+8. The radiologist notes that the provided SPCU of Female, is not consistent with the SPCU Comment and calls the ordering physician to confirm.
 
-8.  After discussing patient history with the ordering physician, the radiologist provides protocol alterations based on the  patient’s transgender status.
+9.  After discussing patient history with the ordering physician, the radiologist provides protocol alterations based on the  patient’s transgender status.
 
 Note: The pre-identified protocol was based on a female patient (see item [8 in Precondition(s)](#preconditions)).
 
@@ -149,19 +150,19 @@ Note: The pre-identified protocol was based on a female patient (see item [8 in 
 
 #### Analysis 
 
-1.  The radiologist creates an SUV ROI on the PACS. The application detects the presence of Patient’s Sex (0010,0040) “F”, a Gender Code (0010,xxx4).(0008,0104) “Male” and Sex Assigned at Birth (0010,xx25) of “F” and prompts the radiologist to enter a value “M” or “F”.
+1.  The radiologist creates an SUV ROI on the PACS. The application detects the presence of Patient’s Sex (0010,0040) “F”, a Gender Code (0010,xxx4).(0008,0104) “Male” and Sex at Birth Sequence (0010,xx25) of “F” and prompts the radiologist to enter a value “M” or “F”.
 
 2.  The Dose Information Reporter collects the RDSR, without exception.
 
-3.  The AI task performer detects the Sex Assigned at Birth (0010,xx25) of “F”, the algorithm processes the images based on female reference values and transfers evidence documents to the PACS.
+3.  The AI task performer detects the Sex at Birth Sequence (0010,xx25) of “F”, the algorithm processes the images based on female reference values and transfers evidence documents to the PACS.
 
-Note: Sex at Birth is required to determine reference values for AI and non-AI machine algorithims in various domains, such as cardiology and neurology.
+Note: Sex at Birth is required to determine reference values for AI and non-AI machine algorithms in various domains, such as cardiology and neurology.
 
 #### Reporting
 
 1.  The radiologist dictates findings pertaining to the procedure, noting scanner and contrast protocol modifications in the “Request” section of the report.
 
-2.  The report format has been configured to include Patient’s Sex (0010,0040), Patient’s Gender Code (0010,xxx4).(0008,0104), Patient Name (0010,xxx3).(0010,xx12) and SFCU Comment (0010,xxx1) in the report.
+2.  The report format has been configured to include Patient’s Sex (0010,0040), Patient’s Gender Code (0010,xxx4).(0008,0104), Patient Name (0010,xxx3).(0010,xx12) and SPCU Comment (0010,xxx1) in the report.
 
 3.  The initial report reads:
 > Patient’s Name = “Janet Smith”  
@@ -219,15 +220,15 @@ These map to DICOM Modality Worklist as follows:
 |                                      | \>Start DateTime              | (0010,xxx6) | DT |                                                                   |
 |                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
 |                                      | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                      | Sex for Clinical Use Sequence | (0010,xxx2) | SQ |                                                                   |
-|                                      | \>SFCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
+|                                      | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ |                                                        |
+|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | 248153007                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male                                                              |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
 |                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-| GSC-8                                | \>SFCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                      | \>SFCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
+|                                      | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |
 |                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
 | PID-5 Name Type Code = Name to Use   | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
 |                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
@@ -276,15 +277,15 @@ These map to DICOM Modality Worklist as follows:
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
 |                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
 |                                      | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                      | Sex for Clinical Use Sequence | (0010,xxx2) | SQ |                                                                   |
-|                                      | \>SFCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+|                                      | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ |                                                        |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | 248153007                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male                                                              |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT |                                                                   |
 |                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-| GSC-8                                | \>SFCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                      | \>SFCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |                                                           |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
+|                                      | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |                                                           |
 |                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
 |                                      | \>Name to use                 | (0010,xx12) | LT |                                                                   |
 |                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
@@ -312,16 +313,16 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | Patient.genderIdentity.period.start           | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
 | Patient.genderIdentity.period.end             | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
 |                                               | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                               | Sex for Clinical Use Sequence | (0010,xxx2) | SQ |                                                                   |
-|                                               | \>SFCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
+|                                               | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ |                                                        |
+|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | serviceRequest.sexForClinicalUse.code         | \>\>Code Value                | (0008,0100) | SH | 248153007                                                         |
 | serviceRequest.sexForClinicalUse.system       | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
 | serviceRequest.sexForClinicalUse.display      | \>\>Code Meaning              | (0008,0104) | LO | Male                                                              |
 | serviceRequest.sexForClinicalUse.period       | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | serviceRequest.sexForClinicalUse.period.start | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 | serviceRequest.sexForClinicalUse.period.end   | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
-| serviceRequest.sexForClinicalUse.comment      | \>SFCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                               | \>SFCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |                                                          |
+| serviceRequest.sexForClinicalUse.comment      | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
+|                                               | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
 |                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
 | Patient.name.use=usual                        | \>Name to use                 | (0010,xx12) | LT | John Smith                                                        |
 |                                               | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
@@ -369,7 +370,7 @@ Below is a CDA [Imaging Report](#reporting) example.
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
 <!--
-	Title: Sex for Clinical Use CDA Template Example file
+	Title: Sex Parameters for Clinical Use CDA Template Example file
 	Version: 1.0
 	Revision History: 
 	31-Jan-2011 source document created
@@ -730,7 +731,7 @@ Social History Section
 								<tr>
 									<td>Recorded Sex or Gender</td>
 									<td>Female</td>
-									<td>Sex Assigned at Birth</td>
+									<td>Sex at Birth</td>
 									<td>California</td>
 									<td>201201011450+0600</td>
 								</tr>
@@ -860,7 +861,7 @@ End of Reason for study Section
 						</observation>
 					</entry>
 					<!--*****************************************************************************
-This Substance Administration is supporting information for Sex for Clinical Use. It 
+This Substance Administration is supporting information for Sex Parameters for Clinical Use. It 
 is not likely to appear in a PET/CT report but is provided to illustrate the use of 
 the supporting reference.
 *****************************************************************************-->
@@ -914,7 +915,7 @@ the supporting reference.
 						<table border="1" width="100%" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
-									<td>Sex For Clinical Use</td>
+									<td>Sex Parameters for Clinical Use</td>
 									<td>Female</td>
 								</tr>
 								<tr>
@@ -938,7 +939,7 @@ the supporting reference.
 								computed tomography (CT)"
 								codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4"/>
 							<!--*****************************************************************************
-This is the first instance of Sex for Clinical Use. It is a subentry of the PET scan 
+This is the first instance of Sex Parameters for Clinical Use. It is a subentry of the PET scan 
 procedure for which  it is relevant.
 *****************************************************************************-->
 							<entryRelationship typeCode="COMP">
@@ -946,14 +947,14 @@ procedure for which  it is relevant.
 									<templateId root="2.16.840.1.113883.10.15.3"
 										extension="2022-09-01"/>
 									<code code="99501-9" codeSystem="2.16.840.1.113883.6.1"
-										displayName="Sex for clinical use"/>
+										displayName="Sex Parameters for Clinical Use"/>
 									<statusCode code="completed"/>
 									<value xsi:type="CD" codeSystem="2.16.840.1.113883.4.642.1.983"
-										codeSystemName="Sex For Clinical Use" code="female"
-										displayName="Female sex for clinical use"> </value>
+										codeSystemName="Sex Parameters for Clinical Use" code="female"
+										displayName="Female Sex Parameters for Clinical Use"> </value>
 									<!--*****************************************************************************
-This is reference points to supporting information for Sex for Clinical Use. It is 
-the basis on which the SFCU is assigned.
+This is reference points to supporting information for Sex Parameters for Clinical Use. It is 
+the basis on which the SPCU is assigned.
 *****************************************************************************-->
 									<entryRelationship typeCode="SPRT">
 										<act classCode="ACT" moodCode="EVN">
@@ -1039,7 +1040,7 @@ the basis on which the SFCU is assigned.
 											codeSystemVersion="1.5"/>
 									</value>
 									<!--*****************************************************************************
-This Substance Administration is supporting information for Sex for Clinical Use. It 
+This Substance Administration is supporting information for Sex Parameters for Clinical Use. It 
 is not likely to appear in a PET/CT report but is provided to illustrate the use of 
 the supporting reference.
 *****************************************************************************-->									<entryRelationship typeCode="COMP">
@@ -1047,12 +1048,12 @@ the supporting reference.
 											<templateId root="2.16.840.1.113883.10.15.3"
 												extension="2022-09-01"/>
 											<code code="99501-9" codeSystem="2.16.840.1.113883.6.1"
-												displayName="Sex for clinical use"/>
+												displayName="Sex Parameters for Clinical Use"/>
 											<statusCode code="completed"/>
 											<value xsi:type="CD"
 												codeSystem="2.16.840.1.113883.4.642.1.983"
-												codeSystemName="Sex For Clinical Use" code="male"
-												displayName="Male sex for clinical use"> </value>
+												codeSystemName="Sex Parameters for Clinical Use" code="male"
+												displayName="Male Sex Parameters for Clinical Use"> </value>
 										</observation>
 									</entryRelationship>
 
