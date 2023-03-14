@@ -21,7 +21,7 @@ PV1||O
 MSH|^~\&|||||20220715142240||OMI^O23|WSA5mY0UBuCGrytRTAFR8UWJ|P|2.9.1
 PID|||patientID^^^^MR||Smith^Janet^^^^^B~Smith^John^^^^^N|||F
 GSP|1|S||76691-5^Gender identity^LN|446151000124109^Male^SCT
-GSC|1|S||248152002^Female^SCT||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
+GSC|1|S||Male-typical^Male typical parameters^<SPCU value set>||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
 ORC|NW
 OBR||||241439007^PET heart study^SCT|||||||||||||||||||||||||||||||||||||||||82800-4^PET+CT Heart W contrast IV^LN
 IPC|accessionNum|procedureID|studyInstanceUID|schProcedureStepId|PT^Positron emission tomography^DCM|122793^PET Myocardial Perfusion, Rest and Stress^DCM
@@ -31,7 +31,7 @@ IPC|accessionNum|procedureID|studyInstanceUID|schProcedureStepId|PT^Positron emi
 MSH|^~\&|||||20220715142240||OMI^O23|WSA5mY0UBuCGrytRTAFR8UWJ|P|2.5|||||||||GenderHarmony^^2.16.840.1.113883.9.282^ISO
 PID|||patientID^^^^MR||Smith^Janet^^^^^B~Smith^John^^^^^N|||F
 GSP|1|S||76691-5^Gender identity^LN|446151000124109^Male^SCT
-GSC|1|S||248152002^Female^SCT||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
+GSC|1|S||Male-typical^Male typical parameters^<SPCU value set>||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
 ORC|NW
 OBR||||241439007^PET heart study^SCT|||||||||||||||||||||||||||||||||||||||||82800-4^PET+CT Heart W contrast IV^LN
 IPC|accessionNum|procedureID|studyInstanceUID|schProcedureStepId|PT^Positron emission tomography^DCM|122793^PET Myocardial Perfusion, Rest and Stress^DCM
@@ -42,7 +42,7 @@ IPC|accessionNum|procedureID|studyInstanceUID|schProcedureStepId|PT^Positron emi
 MSH|^~\&|||||20220715142240||ORU^R01^ORU_R01|WSA5mY0UBuCGrytRTAFR8UWJ|P|2.9.1|
 PID|||patientID^^^^MR||Smith^John^^^^^N|||F|
 GSP|1|S||76691-5^Gender identity^LN|446151000124109^Male^SCT
-GSC|1|S||248152002^Female^SCT||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
+GSC|1|S||Male-typical^Male typical parameters^<SPCU value set>||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
 OBR|1|accessionNum||82800-4^PET+CT Heart W contrast IV^LN|||20220715142240||||
 OBX|1|CWE|55111-9^Current Imaging Procedure Description^LN||Imaging technique (protocol, contrast, radiotracer) described here||||||F|
 OBX|2|FT|19005-8^Impression^LN||Report narrative goes here||||||F|
@@ -53,7 +53,7 @@ OBX|3|TX|55110-1^Conclusion^LN||Conclusion goes here||||||F|
 MSH|^~\&|||||20220715142240||ORU^R01^ORU_R01|WSA5mY0UBuCGrytRTAFR8UWJ|P|2.5|||||||||GenderHarmony^^2.16.840.1.113883.9.282^ISO
 PID|||patientID^^^^MR||Smith^John^^^^^N|||F|
 GSP|1|S||76691-5^Gender identity^LN|446151000124109^Male^SCT
-GSC|1|S||248152002^Female^SCT||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
+GSC|1|S||Male-typical^Male typical parameters^<SPCU value set>||OBR^4||Hormonal treatment, use affirmed gender Cr reference ranges
 OBR|1|accessionNum||82800-4^PET+CT Heart W contrast IV^LN|||20220715142240||||
 OBX|1|CWE|55111-9^Current Imaging Procedure Description^LN||Imaging technique (protocol, contrast, radiotracer) described here||||||F|
 OBX|2|FT|19005-8^Impression^LN||Report narrative goes here||||||F|
