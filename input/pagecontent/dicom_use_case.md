@@ -1,9 +1,3 @@
-**TODO**
-Clean up mapping:
-1. FHIR to DICOM (help from WG-20)
-2. Represent FHIR extensions in mapping tables as they would appear in Sushi
-
-
 ### Introduction
 
 This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. In this case, there are three instances of Sex Parameters for Clinical Use (SPCU). First, the ordering physician provides instructions for interpreting lab values within a Sex Parameters for Clinical Use comment. In the second SPCU, a post-processing AI (Artificial  Intelligence) application utilizes the Sex at Birth Sequence for the basis of reference values. Third, the radiologist determines the appropriate sex to use based on the patient's body composition for a Standard Uptake Value (SUV) calculation. A patient with EHR Sex Parameters for Clinical Use (SPCU) of “female” and a EHR Gender Identity of “male” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered. The DICOM (Digital Imaging and COmmunications in Medicine) Standard attributes in this use case are not, at time of publication of this Implementation Guide, normative, and details in DICOM are still being defined. Readers interested in participating in development of DICOM Sex and Gender encoding, please contact the [DICOM Secretariat](mailto:dicom@dicomstandard.org).
@@ -125,7 +119,7 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 7.  The technologist confers with the radiologist to discuss acceptable lab values for safe contrast administration, given the Sex Comment, as well as the patient’s GFR, bun and creatine.
 
-8. The radiologist notes that the provided SPCU of Female, is not consistent with the SPCU Comment and calls the ordering physician to confirm.
+8.  The radiologist notes that the provided SPCU of Female, is not consistent with the SPCU Comment and calls the ordering physician to confirm.
 
 9.  After discussing patient history with the ordering physician, the radiologist provides protocol alterations based on the  patient’s transgender status.
 
@@ -154,7 +148,7 @@ Note: The pre-identified protocol was based on a female patient (see item [8 in 
 
 2.  The Dose Information Reporter collects the RDSR, without exception.
 
-3.  The AI task performer parses the Recorded Sex or Gender Sequence (0010,xx14) and identifies a Recorded Value(0010,xx15) of “F” for an item with a RSG Type Code Sequence (0010,xx16) of (76689-9,LN,Sex assigned at birth). The algorithm processes the images based on female reference values and transfers evidence documents to the PACS.
+3.  The AI task performer parses the Sex Parameters for Clinical Use Sequence (0010,xxx2) and identifies an Item with a Start DateTime (0010,xxx6) that matches the Patient's Birth Date (0010,0030), having a SPCU Code Sequence (0010,xxx9) of (Female-typical,SexParameterForClinicalUse,Female-typical parameters). The algorithm processes the images based on female reference values and transfers evidence documents to the PACS.
 
 Note: Sex at Birth is required to determine reference values for AI and non-AI machine algorithms in various domains, such as cardiology and neurology.
 
@@ -187,79 +181,74 @@ See these [examples](v2dicom_use_case.html#order-for-imaging) of HL7 v2.9.1 and 
 
 These map to DICOM Modality Worklist as follows:
 
-| V2                                   | Attribute Name                | Tag         | VR | Value                                                             |
+| v2                                   | Attribute Name                | Tag         | VR | Value                                                             |
 | ------------------------------------ | ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
 | PID-5 Name Type Code = Birth Name    | Patient's Name                | (0010,0010) | PN | Smith\^Janet^^^                                                   |
+| PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780410000000                                                    |
 | PID-8                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 |                                      | Patient’s Gender              | (0010,xxxx) | CS | M                                                                 |
-|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
-|                                      | \>Gender Code Sequence        | (0010,xxx4) | SQ |                                                                   |
+|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ | --ITEM 1--                                                        |
+|                                      | \>Gender Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
 | GSP-5-1                              | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
 | GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
 | GSP-5-2                              | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
-|                                      | \>Start DateTime              | (0010,xxx6) | DT |                                                                   |
-|                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-|                                      | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                      | Sex Parameter for Clinical Use Sequence | (0010,xxx2) | SQ |                                                         |
-|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
+|                                      | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 1--                                              |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ | --ITEM 1--                                                        |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Male-typical                                                      |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                               |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameters                                           |
-|                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
-|                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
 | GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                      | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |
-|                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+| GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
+|                                      | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                              |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ | --ITEM 1--                                                        |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Female-typical                                                    |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameters                                         |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+| GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780410000000                                                    |
+| GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
+|                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |  --ITEM 1--                                                       |
 | PID-5 Name Type Code = Name to Use   | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
-|                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
+|                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
-|                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-|                                      | \>Name to Use Comment         | (0010,xx13) | LT |                                                                   |
-| PID-8 (based on local mapping rules) | Sex at Birth Code Sequence    | (0010,xx25) | CS |                                                                   |
-|                                      | \>\>Code Value                | (0008,0100) | SH | 248152002                                                         |
-|                                      | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
-|                                      | \>\>Code Meaning              | (0008,0104) | LO | Female                                                            |
 
 #### Example 02: Patient Name Update
 
 See these [examples](v2dicom_use_case.html#registration-of-name-change)of HL7 v2.9.1 and v2.5 ADT Demographics Updates from [arrival and check-in](#arrival-and-check-in).
 Note: in previous v2 versions, the first occurrence indicated the legal name. In this case, Name to Use name is listed first for legacy compatibility.
 
-
 These map to DICOM Modality Worklist as follows:
 
-| V2                                   | Attribute Name                | Tag         | VR | Value                                                             |
+| v2                                   | Attribute Name                | Tag         | VR | Value                                                             |
 | ------------------------------------ | ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
 | PID-5 Name Type Code = Name to Use   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780410000000                                                    |
 | PID-8                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
-|                                      | Patient’s Gender              | (0010,xxxx) | CS | M                                                                 |
-|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
-|                                      | \>Gender Code Sequence        | (0010,xxx4) | SQ |                                                                   |
+|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ | --ITEM 1--                                                        |
+|                                      | \>Gender Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
 | GSP-5-1                              | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
 | GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
 | GSP-5-2                              | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
-|                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
-|                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-|                                      | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                      | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ |                                                        |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+| GSP-6-1                              | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
+|                                      | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 1--                                              |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Male-typical                                                      |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                               |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameters                                           |
-|                                      | \>Start DateTime              | (0010,xxx6) | DT |                                                                   |
-|                                      | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
 | GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                      | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       |  
-|                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-|                                      | \>Name to use                 | (0010,xx12) | LT |                                                                   |
-|                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
-|                                      | \>\>Start DateTime            | (0010,xxx6) | DT |                                                                   |
-|                                      | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
-|                                      | \>Name to Use Comment         | (0010,xx13) | LT |                                                                   |
-| PID-8 (based on local mapping rules) | Sex at Birth Code Sequence    | (0010,xx25) | CS |                                                                   |
-|                                      | \>\>Code Value                | (0008,0100) | SH | 248152002                                                         |
-|                                      | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
-|                                      | \>\>Code Meaning              | (0008,0104) | LO | Female                                                            |
+| GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
+| GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
+|                                      | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                              |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Female-typical                                                    |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameters                                         |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |  --ITEM 1--                                                       |
+| GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780410000000                                                    |
+| GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 
 #### Example 03: FHIR Mapping
 
@@ -267,41 +256,38 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 
 | FHIR attribute                                | Attribute Name                | TAG         | VR | Value                                                             |
 | ----------------------------------------------| ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
-| Patient.name.use=official                     | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| Patient.name [use=official]                   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | Patient.gender                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
-|                                               | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
-|                                               | \>Gender Code                 | (0010,xxx4) | SQ |                                                                   |
-| Patient.genderIdentity.code                   | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
-| Patient.genderIdentity.system                 | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
-| Patient.genderIdentity.display                | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
-| Patient.genderIdentity.period.start           | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
-| Patient.genderIdentity.period.end             | \>Stop DateTime               | (0010,xxx7) | DT |                                                                   |
-|                                               | \>Gender Comment              | (0010,xxx8) | LT |                                                                   |
-|                                               | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ |                                                        |
-|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
-| serviceRequest.sexForClinicalUse.code         | \>\>Code Value                | (0008,0100) | SH | 248153007                                                         |
-| serviceRequest.sexForClinicalUse.system       | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
-| serviceRequest.sexForClinicalUse.display      | \>\>Code Meaning              | (0008,0104) | LO | Male                                                              |
-| serviceRequest.sexForClinicalUse.period       | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
-| serviceRequest.sexForClinicalUse.period.start | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
-| serviceRequest.sexForClinicalUse.period.end   | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
-| serviceRequest.sexForClinicalUse.comment      | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
-|                                               | \>SPCU Reference              | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
-|                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
+| Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ | --ITEM 1--                                                        |
+|                                               | \>Gender Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
+| Patient.extension [value code]                | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
+| Patient.extension [value system]              | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
+| Patient.extension [value display]             | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
+| Patient.extension [period start]              | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
+| serviceRequest.extension [PatSexParameterForClinicalUse] | Sex Parameters for Clinical Use Sequence | (0010,xxx2) | SQ | --ITEM 1--                                  |
+|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ | --ITEM 1--                                                        |
+| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Male-typical                                                      |
+| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
+| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameters                                           |
+| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
+|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+| serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
+| serviceRequest.extension [supportingInfo reference] | \>SPCU Reference        | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
+| serviceRequest.extension [PatSexParameterForClinicalUse] | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                   |
+|                                               | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
+| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Female-typical                                                    |
+| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | SexParameterForClinicalUse                                        |
+| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameters                                         |
+| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
+|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ |  --ITEM 1--                                                       |
+| serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 19780410000000                                                    |
+| serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
+|                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |  --ITEM 1--                                                       |
 | Patient.name[use=usual]                       | \>Name to use                 | (0010,xx12) | LT | John Smith                                                        |
-|                                               | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
-|                                               | \>\>Start DateTime            | (0010,xxx6) | DT |                                                                   |
-|                                               | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
-|                                               | \>Name to Use Comment         | (0010,xx13) | LT |                                                                   |
-| Note: based on local mapping                  | Sex at Birth Code Sequence    | (0010,xx25) | CS | F                                                                 |
-| Patient.gender.code                           | \>\>Code Value                | (0008,0100) | SH | 248152002                                                         |
-| Patient.gender.system                         | \>\>Coding Scheme Designator  | (0008,0102) | SH | SCT                                                               |
-| Patient.gender.display                        | \>\>Code Meaning              | (0008,0104) | LO | Female                                                            |
 
 #### Example 04: Imaging Report
 
 See these [examples](v2dicom_use_case.html#result-for-imaging) of HL7 v2.9.1 and v2.5 Unsolicited Observation Results containing the narrative from the final [Imaging Report](#reporting).
-
 
 *OBX Segments containing Imaging Report Narrative omitted for brevity*
 
