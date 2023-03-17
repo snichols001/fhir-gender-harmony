@@ -4,7 +4,6 @@ actor "Referring Physician" as referring
 actor "Facility Clerk" as clerk
 actor "Technologist" as tech
 actor Radiologist as radiologist
-actor "Recovery Nurse" as nurse
 participant "PET/CT Modality" as pet
 participant "EHR" as EHR
 participant "Image Manager/Archive \n DSS/Order Filler (RIS/PACS)" as PACS

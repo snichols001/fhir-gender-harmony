@@ -213,6 +213,7 @@ These map to DICOM Modality Worklist as follows:
 | PID-5 Name Type Code = Name to Use   | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
 |                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
+{:.table-striped .table-bordered}
 
 #### Example 02: Patient Name Update
 
@@ -239,7 +240,6 @@ These map to DICOM Modality Worklist as follows:
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameters                                           |
 | GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
-| GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT |                                                                   |
 |                                      | Sex Parameters for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                              |
 |                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Female-typical                                                    |
@@ -249,6 +249,7 @@ These map to DICOM Modality Worklist as follows:
 |                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |  --ITEM 1--                                                       |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780410000000                                                    |
 | GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
+{:.table-striped .table-bordered}
 
 #### Example 03: FHIR Mapping
 
@@ -284,6 +285,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |  --ITEM 1--                                                       |
 | Patient.name[use=usual]                       | \>Name to use                 | (0010,xx12) | LT | John Smith                                                        |
+{:.table-striped .table-bordered}
 
 #### Example 04: Imaging Report
 
