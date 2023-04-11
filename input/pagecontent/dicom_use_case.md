@@ -1,6 +1,6 @@
 ### Introduction
 
-This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. A patient with EHR Sex parameter for Clinical Use (SPCU) of “Female-typical” and an EHR Gender Identity of “Identifies a male gender” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered.
+This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. A patient with EHR Sex Parameter for Clinical Use (SPCU) of “Female-typical” and an EHR Gender Identity of “Identifies a male gender” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered.
 
 In this case, there are three examples of Sex Parameter for Clinical Use (SPCU). First, the ordering physician provides instructions for interpreting lab values within a Sex Parameter for Clinical Use comment. In the second SPCU, a post-processing AI (Artificial  Intelligence) application utilizes the a different item in the Sex Parameter for Clinical Use Sequence for reference values. Third, the radiologist determines the appropriate sex for a Standard Uptake Value (SUV) calculation, based on the patient's body composition.
 
@@ -18,7 +18,7 @@ The DICOM (Digital Imaging and COmmunications in Medicine) Standard attributes i
 
 4.  PET/CT Technologist
 
-5. Radiologist
+5.  Radiologist
 
 #### Systems, (using IHE Actor names)
 
@@ -122,7 +122,7 @@ Note: The pre-identified protocol was based on a female patient (see item [8 in 
 
 2.  Patient demographics are loaded into the scanner demographics interface.
 
-3.  The technologist applies alterations prescribed by the radiologist to scanner and contrast protocol. The radiotracer dose is not changed, as the department standardizes doses regardless of Patient’s Sex.
+3.  The technologist applies alterations prescribed by the radiologist to scanner and contrast protocol. The radiotracer dose is not changed, as the department standardizes doses regardless of Patient Sex.
 
 4.  The technologist starts an IV, administers radiotracer, and connects the contrast injector for the contrast-enhanced CT portion of the procedure.
 
@@ -133,11 +133,11 @@ Note: The pre-identified protocol was based on a female patient (see item [8 in 
 
 #### Analysis 
 
-1.  The radiologist creates an SUV ROI on the PACS. The PACS identifies multiple items with different values in the Sex parameter for Clinical Use Sequence (0010,xxx2), and prompts the radiologist to enter a value “M” or “F”.
+1.  The radiologist creates an SUV ROI on the PACS. The PACS identifies multiple items with different values in the Sex Parameter for Clinical Use Sequence (0010,xxx2), and prompts the radiologist to enter a value “M” or “F”.
 
 2.  The Dose Information Reporter collects the RDSR, without exception.
 
-3.  The AI task performer parses the Sex parameter for Clinical Use Sequence (0010,xxx2) and identifies an Item with a Start DateTime (0010,xxx6) that matches the Patient's Birth Date (0010,0030), having a SPCU Code Sequence (0010,xxx9) of (Sup233-01, DCM, Female typical parameter). The algorithm processes the images, applying female reference values, and transfers evidence documents to the PACS.
+3.  The AI task performer parses the Sex Parameter for Clinical Use Sequence (0010,xxx2) and identifies an Item with a Start DateTime (0010,xxx6) that matches the Patient's Birth Date (0010,0030), having a SPCU Code Sequence (0010,xxx9) of (Sup233-01, DCM, Female typical parameter). The algorithm processes the images, applying female reference values, and transfers evidence documents to the PACS.
 
 Note: Sex at birth is required to determine reference values for AI and non-AI machine algorithms in various domains, such as cardiology and neurology.
 
@@ -152,7 +152,6 @@ Note: Sex at birth is required to determine reference values for AI and non-AI m
 > Patient’s Sex = “F”  
 > Patient’s Gender Identity = “M”  
 > Name to Use = “John Smith"  
-
 
 4.  After the patient’s name change has been processed, the report is addended. The addended report reads:
 > Patient’s Name = “John Smith”  
@@ -173,34 +172,35 @@ These map to DICOM Modality Worklist as follows:
 | v2                                   | Attribute Name                | Tag         | VR | Value                                                             |
 | ------------------------------------ | ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
 | PID-5 Name Type Code = Birth Name    | Patient's Name                | (0010,0010) | PN | Smith\^Janet^^^                                                   |
-| PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780328                                                    |
+| PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780328                                                          |
 | PID-8                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 |                                      | Patient’s Gender              | (0010,xxxx) | CS | M                                                                 |
-|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                         |
-|                                      | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
+|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
+|                                      | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
 | GSP-5-1                              | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
-| GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                               |
+| GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                              |
 | GSP-5-2                              | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
-|                                      | Sex parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 1--                                              |
-|                                      | \>SPCU Code Sequence         | (0010,xxx9) | SQ | --ITEM 1--                                                        |
-| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                      |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                           |
-| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges       |
-|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+|                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 1--                                               |
+|                                      |                               |             |    | --ITEM 1--                                                        |
+|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
-|                                      | Sex parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                              |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ | --ITEM 1--                                                        |
-| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                     |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                         |
+|                                      |                               |             |    | --ITEM 2--                                                        |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
 | GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
-|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
-|                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |  --ITEM 1--                                                       |
+|                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
 | PID-5 Name Type Code = Name to Use   | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
-|                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+|                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
 
 
@@ -216,26 +216,28 @@ These map to DICOM Modality Worklist as follows:
 | PID-5 Name Type Code = Name to Use   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780328000000                                                    |
 | PID-8                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
-|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ | --ITEM 1--                                                        |
-|                                      | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
+|                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
+|                                      | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
 | GSP-5-1                              | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
-| GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                               |
+| GSP-5-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                              |
 | GSP-5-2                              | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
 | GSP-6-1                              | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
-|                                      | Sex parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 1--                                              |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
-| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                        |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                           |
-| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges       |
+|                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ |                                                          |
+|                                      |                               |             |    | --ITEM 1--                                                        |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
-|                                      | Sex parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                              |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
-| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                    |
-| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                         |
+|                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ |                                                          |
+|                                      |                               |             |    | --ITEM 2--                                                        |
+|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+| GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
+| GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
 | GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
-|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |  --ITEM 1--                                                       |
+|                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 
@@ -248,31 +250,32 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | ----------------------------------------------| ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
 | Patient.name [use=official]                   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | Patient.gender                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
-| Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ | --ITEM 1--                                                        |
-|                                               | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ | --ITEM 1--                                                        |
+| Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
+|                                               | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
 | Patient.extension [value code]                | \>\>Code Value                | (0008,0100) | SH | 446151000124109                                                   |
-| Patient.extension [value system]              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                               |
+| Patient.extension [value system]              | \>\>Coding Scheme Designator  | (0008,0102) | SH | UMLS                                                              |
 | Patient.extension [value display]             | \>\>Code Meaning              | (0008,0104) | LO | Identifies as male gender                                         |
 | Patient.extension [period start]              | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
-| serviceRequest.extension [PatSexParameterForClinicalUse] | Sex parameter for Clinical Use Sequence | (0010,xxx2) | SQ | --ITEM 1--                                  |
-|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ | --ITEM 1--                                                        |
-| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                      |
-| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                           |
-| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges       |
-|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ | --ITEM 1--                                                        |
+| serviceRequest.extension [PatSexParameterForClinicalUse] | Sex Parameter for Clinical Use Sequence | (0010,xxx2) | SQ |                                              |
+|                                               |                               |             |    | --ITEM 1--                                                        |
+|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
+| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
+| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
+| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
+|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 | serviceRequest.extension [supportingInfo reference] | \>SPCU Reference        | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
-| serviceRequest.extension [PatSexParameterForClinicalUse] | Sex parameter for Clinical Use Sequence| (0010,xxx2) | SQ | --ITEM 2--                                   |
-|                                               | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |  --ITEM 1--                                                       |
-| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                    |
-| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                        |
-| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                         |
+|                                               |                               |             |    | --ITEM 2--                                                        |
+|                                               | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+| serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
+| serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
+| serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
 | serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Sex at birth                                                      |
-|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ |  --ITEM 1--                                                       |
+|                                               | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
-|                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |  --ITEM 1--                                                       |
+|                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
 | Patient.name[use=usual]                       | \>Name to use                 | (0010,xx12) | LT | John Smith                                                        |
 
 
