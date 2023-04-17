@@ -199,7 +199,7 @@ These map to DICOM Modality Worklist as follows:
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-| PID-5 Name Type Code = Name to Use   | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
+| PID-5 Name Type Code = Nickname      | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
 |                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
 
@@ -213,7 +213,7 @@ These map to DICOM Modality Worklist as follows:
 
 | v2                                   | Attribute Name                | Tag         | VR | Value                                                             |
 | ------------------------------------ | ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
-| PID-5 Name Type Code = Name to Use   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| PID-5 Name Type Code = Nickname      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | PID-7                                | Patient's Birth Date          | (0010,0030) | DA | 19780328000000                                                    |
 | PID-8                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 |                                      | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
