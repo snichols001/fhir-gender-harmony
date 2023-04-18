@@ -190,7 +190,7 @@ These map to DICOM Modality Worklist as follows:
 |                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 |                                      |                               |             |    | --ITEM 2--                                                        |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
@@ -224,7 +224,7 @@ These map to DICOM Modality Worklist as follows:
 | GSP-6-1                              | \>Start DateTime              | (0010,xxx6) | DT | 20220715010000                                                    |
 |                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ |                                                          |
 |                                      |                               |             |    | --ITEM 1--                                                        |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
@@ -232,7 +232,7 @@ These map to DICOM Modality Worklist as follows:
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 |                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ |                                                          |
 |                                      |                               |             |    | --ITEM 2--                                                        |
-|                                      | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+|                                      | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
@@ -267,7 +267,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 | serviceRequest.extension [supportingInfo reference] | \>SPCU Reference        | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
 |                                               |                               |             |    | --ITEM 2--                                                        |
-|                                               | \>SPCU Code  Sequence         | (0010,xxx9) | SQ |                                                                   |
+|                                               | \>SPCU Code Sequence          | (0010,xxx9) | SQ |                                                                   |
 | serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-01                                                         |
 | serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Female typical parameter                                          |
