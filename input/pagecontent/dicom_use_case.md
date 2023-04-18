@@ -199,7 +199,7 @@ These map to DICOM Modality Worklist as follows:
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | GSC-5-2                              | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                      | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-| PID-5 Name Type Code = Nickname      | \>Name to use                 | (0010,xx12) | LT | Smith, John                                                       |
+| PID-5 Name Type Code = Nickname      | \>Name to Use                 | (0010,xx12) | LT | Smith, John                                                       |
 |                                      | \>Validity Period Sequence    | (0010,xxx5) | SQ |                                                                   |
 |                                      | \>Start DateTime              | (0010,xxx6) | DT | 20220715090000                                                    |
 
@@ -248,7 +248,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 
 | FHIR attribute                                | Attribute Name                | TAG         | VR | Value                                                             |
 | ----------------------------------------------| ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
-| Patient.name [use=official]                   | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| Patient.name [use=usual]                      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | Patient.gender                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 | Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
 |                                               | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
@@ -276,7 +276,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-| Patient.name[use=usual]                       | \>Name to use                 | (0010,xx12) | LT | John Smith                                                        |
+| Patient.name[use=nickname]                    | \>Name to Use                 | (0010,xx12) | LT | John Smith                                                        |
 
 
 #### Example 04: Imaging Report
