@@ -40,13 +40,17 @@ Use case covers admission, patient prep, examination, post processing and report
 
 ### Precondition(s):
 
-1.  John Smith is registered in the hospital record system with his old name of “Janet Smith”.
+1.  John Smith is registered in the hospital record system under the name “Janet Smith”.
 
-2.  Patient ID has not changed.
+2. Physician places the order in the EHR for "Janet Smith"
 
 3.  John Smith arrives at an outpatient facility with an appointment.
 
 4.  Patient history, social history, medical history has already been captured and are available in the EHR under "Janet Smith".
+
+5.  Prior exams for comparison are retrieved based on rules established by the radiology department, using the name "Janet Smith" (e.g., body region, patient ID, type of exam).
+
+6.  Technical scan and contrast administration parameters (protocol) are pre-determined based on departmental protocols for a female patient.
 
 [**Example 01**](#example-01-imaging-order) depicts an HL7 Imaging Order for this patient with mapping to DICOM Modality Worklist attributes.
 
@@ -248,7 +252,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 
 | FHIR attribute                                | Attribute Name                | TAG         | VR | Value                                                             |
 | ----------------------------------------------| ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
-| Patient.name [use=usual]                      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| Patient.name [use=official]                      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
 | Patient.gender                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 | Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
 |                                               | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
@@ -276,7 +280,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-| Patient.name[use=nickname]                    | \>Name to Use                 | (0010,xx12) | LT | John Smith                                                        |
+| Patient.name[use=usual]                    | \>Name to Use                 | (0010,xx12) | LT | John Smith                                                        |
 
 
 #### Example 04: Imaging Report
