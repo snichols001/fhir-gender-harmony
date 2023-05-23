@@ -1,78 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" width="1122px" height="584px" viewBox="0, 0, 1122, 584" preserveAspectRatio="none" contentStyleType="text/css" zoomAndPan="magnify" style="background:#FFF;">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace" width="1148px" height="675px" viewBox="0, 0, 1148, 675" preserveAspectRatio="none" contentStyleType="text/css" zoomAndPan="magnify" style="background:#FFF;">
   <defs />
   <g>
-    <line x1="42" y1="37.6094" x2="42" y2="547.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
-    <line x1="469" y1="37.6094" x2="469" y2="547.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
-    <line x1="529" y1="37.6094" x2="529" y2="547.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
-    <line x1="945" y1="37.6094" x2="945" y2="547.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
-    <line x1="1058" y1="37.6094" x2="1058" y2="547.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
-    <rect x="5" y="5" width="74" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="12" y="26.5332" textLength="60" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Physician</text>
-    <rect x="5" y="546.9375" width="74" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="12" y="568.4707" textLength="60" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Physician</text>
-    <rect x="440" y="5" width="58" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="447" y="26.5332" textLength="44" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Patient</text>
-    <rect x="440" y="546.9375" width="58" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="447" y="568.4707" textLength="44" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Patient</text>
-    <rect x="508" y="5" width="42" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="515" y="26.5332" textLength="28" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">EHR</text>
-    <rect x="508" y="546.9375" width="42" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="515" y="568.4707" textLength="28" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">EHR</text>
-    <rect x="899" y="5" width="92" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="906" y="26.5332" textLength="78" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab_System</text>
-    <rect x="899" y="546.9375" width="92" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="906" y="568.4707" textLength="78" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab_System</text>
-    <rect x="1001" y="5" width="115" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="1008" y="26.5332" textLength="101" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab_Technician</text>
-    <rect x="1001" y="546.9375" width="115" height="31.6094" rx="2.5" ry="2.5" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
-    <text x="1008" y="568.4707" textLength="101" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab_Technician</text>
-    <polygon points="457,65.9609 467,69.9609 457,73.9609 461,69.9609" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="69.9609" x2="463" y2="69.9609" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="65.1045" textLength="350" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Reviews anatomic inventory and notes patient has a prostate</text>
-    <polygon points="53,129.0156 43,133.0156 53,137.0156 49,133.0156" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="47" y1="133.0156" x2="528" y2="133.0156" stroke-width="1" style="stroke:#181818;" />
-    <text x="59" y="95.4561" textLength="408" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Julie’s age is over 50, has an anatomic inventory with prostate present,</text>
-    <text x="59" y="111.8076" textLength="425" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">and no prostate exam or PSA value in the past 10 years. Alerts physician</text>
-    <text x="59" y="128.1592" textLength="412" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">that a prostate exam and/or a PSA should be considered for the patient</text>
-    <polygon points="457,159.3672 467,163.3672 457,167.3672 461,163.3672" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="163.3672" x2="463" y2="163.3672" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="158.5107" textLength="217" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Reviews recommendation with patient</text>
-    <polygon points="53,189.7188 43,193.7188 53,197.7188 49,193.7188" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="47" y1="193.7188" x2="468" y2="193.7188" stroke-width="1" style="stroke:#181818;" />
-    <text x="59" y="188.8623" textLength="84" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Patient agrees</text>
-    <polygon points="457,220.0703 467,224.0703 457,228.0703 461,224.0703" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="224.0703" x2="463" y2="224.0703" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="219.2139" textLength="251" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Collects current medication list from patient</text>
-    <polygon points="53,250.4219 43,254.4219 53,258.4219 49,254.4219" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="47" y1="254.4219" x2="468" y2="254.4219" stroke-width="1" style="stroke:#181818;" />
-    <text x="59" y="249.5654" textLength="403" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Informs Dr. Jones that she is receiving an estrogenic therapy regimen.</text>
-    <polygon points="517,280.7734 527,284.7734 517,288.7734 521,284.7734" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="284.7734" x2="523" y2="284.7734" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="279.917" textLength="383" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Creates entry that patient is taking an estrogenic therapy regimen.</text>
-    <polygon points="457,311.125 467,315.125 457,319.125 461,315.125" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="315.125" x2="463" y2="315.125" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="310.2686" textLength="357" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Examines patient prostate and notes a nodule on the prostate</text>
-    <polygon points="457,341.4766 467,345.4766 457,349.4766 461,345.4766" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="345.4766" x2="463" y2="345.4766" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="340.6201" textLength="356" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Discusses finding with patient. Recommends ordering a PSA.</text>
-    <polygon points="53,371.8281 43,375.8281 53,379.8281 49,375.8281" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="47" y1="375.8281" x2="468" y2="375.8281" stroke-width="1" style="stroke:#181818;" />
-    <text x="59" y="370.9717" textLength="88" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Patient agrees.</text>
-    <polygon points="517,418.5313 527,422.5313 517,426.5313 521,422.5313" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="42" y1="422.5313" x2="523" y2="422.5313" stroke-width="1" style="stroke:#181818;" />
-    <text x="49" y="401.3232" textLength="242" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Places lab order for PSA quantitative test.</text>
-    <text x="49" y="417.6748" textLength="445" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Enters SPCU value as ‘Male’ with a comment that the patient has a prostate.</text>
-    <polygon points="933,465.2344 943,469.2344 933,473.2344 937,469.2344" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="529" y1="469.2344" x2="939" y2="469.2344" stroke-width="1" style="stroke:#181818;" />
-    <text x="536" y="448.0264" textLength="392" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Transmits lab order for PSA quantitative test, SPCU value as ‘Male,’</text>
-    <text x="540" y="464.3779" textLength="261" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">and comment that the patient has a prostate.</text>
-    <polygon points="1046.5,495.5859 1056.5,499.5859 1046.5,503.5859 1050.5,499.5859" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="469" y1="499.5859" x2="1052.5" y2="499.5859" stroke-width="1" style="stroke:#181818;" />
-    <text x="476" y="494.7295" textLength="271" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Checks in with Lab department as ‘Julie Smith’</text>
-    <polygon points="480,525.9375 470,529.9375 480,533.9375 476,529.9375" stroke-width="1" style="fill:#181818;stroke:#181818;" />
-    <line x1="474" y1="529.9375" x2="1057.5" y2="529.9375" stroke-width="1" style="stroke:#181818;" />
-    <text x="486" y="525.0811" textLength="218" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Collects blood specimen from patient.</text>
+    <line x1="38" y1="82.6094" x2="38" y2="592.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
+    <line x1="461" y1="82.6094" x2="461" y2="592.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
+    <line x1="547" y1="82.6094" x2="547" y2="592.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
+    <line x1="994" y1="82.6094" x2="994" y2="592.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
+    <line x1="1095" y1="82.6094" x2="1095" y2="592.9375" stroke-width="0.5" stroke-dasharray="5 5" style="stroke:#181818;" />
+    <text x="5" y="79.5332" textLength="60" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Physician</text>
+    <ellipse cx="38" cy="13.5" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M38 21.5 L38 48.5 M25 29.5 L51 29.5 M38 48.5 L25 63.5 M38 48.5 L51 63.5" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="5" y="606.4707" textLength="60" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Physician</text>
+    <ellipse cx="38" cy="618.0469" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M38 626.0469 L38 653.0469 M25 634.0469 L51 634.0469 M38 653.0469 L25 668.0469 M38 653.0469 L51 668.0469" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="436" y="79.5332" textLength="44" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Patient</text>
+    <ellipse cx="461" cy="13.5" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M461 21.5 L461 48.5 M448 29.5 L474 29.5 M461 48.5 L448 63.5 M461 48.5 L474 63.5" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="436" y="606.4707" textLength="44" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Patient</text>
+    <ellipse cx="461" cy="618.0469" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M461 626.0469 L461 653.0469 M448 634.0469 L474 634.0469 M461 653.0469 L448 668.0469 M461 653.0469 L474 668.0469" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="530" y="79.5332" textLength="28" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">EHR</text>
+    <ellipse cx="547" cy="13.5" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M547 21.5 L547 48.5 M534 29.5 L560 29.5 M547 48.5 L534 63.5 M547 48.5 L560 63.5" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="530" y="606.4707" textLength="28" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">EHR</text>
+    <ellipse cx="547" cy="618.0469" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M547 626.0469 L547 653.0469 M534 634.0469 L560 634.0469 M547 653.0469 L534 668.0469 M547 653.0469 L560 668.0469" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="954" y="79.5332" textLength="74" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab System</text>
+    <ellipse cx="994" cy="13.5" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M994 21.5 L994 48.5 M981 29.5 L1007 29.5 M994 48.5 L981 63.5 M994 48.5 L1007 63.5" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="954" y="606.4707" textLength="74" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab System</text>
+    <ellipse cx="994" cy="618.0469" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M994 626.0469 L994 653.0469 M981 634.0469 L1007 634.0469 M994 653.0469 L981 668.0469 M994 653.0469 L1007 668.0469" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="1044" y="79.5332" textLength="97" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab Technician</text>
+    <ellipse cx="1095.5" cy="13.5" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M1095.5 21.5 L1095.5 48.5 M1082.5 29.5 L1108.5 29.5 M1095.5 48.5 L1082.5 63.5 M1095.5 48.5 L1108.5 63.5" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <text x="1044" y="606.4707" textLength="97" lengthAdjust="spacing" font-family="sans-serif" font-size="14" style="fill:black;">Lab Technician</text>
+    <ellipse cx="1095.5" cy="618.0469" rx="8" ry="8" stroke-width="0.5" style="fill:#E2E2F0;stroke:#181818;" />
+    <path d="M1095.5 626.0469 L1095.5 653.0469 M1082.5 634.0469 L1108.5 634.0469 M1095.5 653.0469 L1082.5 668.0469 M1095.5 653.0469 L1108.5 668.0469" stroke-width="0.5" style="fill:none;stroke:#181818;" />
+    <polygon points="449,110.9609 459,114.9609 449,118.9609 453,114.9609" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="38" y1="114.9609" x2="455" y2="114.9609" stroke-width="1" style="stroke:#181818;" />
+    <text x="45" y="110.1045" textLength="350" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Reviews anatomic inventory and notes patient has a prostate</text>
+    <polygon points="49,174.0156 39,178.0156 49,182.0156 45,178.0156" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="178.0156" x2="546" y2="178.0156" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="140.4561" textLength="396" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Julie's age is over 50, has an antomic invenory with prostate present,</text>
+    <text x="59" y="156.8076" textLength="425" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">and no prostate exam or PSA value in the past 10 years. Alerts physician</text>
+    <text x="59" y="173.1592" textLength="412" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">that a prostate exam and/or a PSA should be considered for the patient</text>
+    <polygon points="449,204.3672 459,208.3672 449,212.3672 453,208.3672" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="38" y1="208.3672" x2="455" y2="208.3672" stroke-width="1" style="stroke:#181818;" />
+    <text x="45" y="203.5107" textLength="213" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Reviews reccomendation with patient</text>
+    <polygon points="49,234.7188 39,238.7188 49,242.7188 45,238.7188" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="238.7188" x2="460" y2="238.7188" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="233.8623" textLength="84" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Patient agrees</text>
+    <polygon points="449,265.0703 459,269.0703 449,273.0703 453,269.0703" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="38" y1="269.0703" x2="455" y2="269.0703" stroke-width="1" style="stroke:#181818;" />
+    <text x="45" y="264.2139" textLength="254" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Collects current mediciation list from patient</text>
+    <polygon points="49,295.4219 39,299.4219 49,303.4219 45,299.4219" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="299.4219" x2="460" y2="299.4219" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="294.5654" textLength="399" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Informs Dr. Jones that she is receiving an estrogenic therapy regimen</text>
+    <polygon points="535,325.7734 545,329.7734 535,333.7734 539,329.7734" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="38" y1="329.7734" x2="541" y2="329.7734" stroke-width="1" style="stroke:#181818;" />
+    <text x="45" y="324.917" textLength="379" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Creates entry that patient is taking an estrogenic therapy regimen</text>
+    <polygon points="49,356.125 39,360.125 49,364.125 45,360.125" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="360.125" x2="460" y2="360.125" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="355.2686" textLength="357" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Examines patient prostate and notes a nodule on the prostate</text>
+    <polygon points="49,386.4766 39,390.4766 49,394.4766 45,390.4766" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="390.4766" x2="460" y2="390.4766" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="385.6201" textLength="352" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Discusses finding with patient. Recommends ordering a PSA</text>
+    <polygon points="49,416.8281 39,420.8281 49,424.8281 45,420.8281" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="43" y1="420.8281" x2="460" y2="420.8281" stroke-width="1" style="stroke:#181818;" />
+    <text x="55" y="415.9717" textLength="84" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Patient agrees</text>
+    <polygon points="535,463.5313 545,467.5313 535,471.5313 539,467.5313" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="38" y1="467.5313" x2="541" y2="467.5313" stroke-width="1" style="stroke:#181818;" />
+    <text x="45" y="446.3232" textLength="238" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Places lab order for PSA quantitative test</text>
+    <text x="49" y="462.6748" textLength="481" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Enters SPCU value as 'Male typical' with a comment that the patient has a prostate</text>
+    <polygon points="982,510.2344 992,514.2344 982,518.2344 986,514.2344" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="547" y1="514.2344" x2="988" y2="514.2344" stroke-width="1" style="stroke:#181818;" />
+    <text x="554" y="493.0264" textLength="419" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Transmits lab order for PSA quantitative test, SPC value as 'Male typical'</text>
+    <text x="558" y="509.3779" textLength="257" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">and comment that the patient has a prostate</text>
+    <polygon points="1083.5,540.5859 1093.5,544.5859 1083.5,548.5859 1087.5,544.5859" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="461" y1="544.5859" x2="1089.5" y2="544.5859" stroke-width="1" style="stroke:#181818;" />
+    <text x="468" y="539.7295" textLength="269" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Checks in with Lab department as 'Julie Smith'</text>
+    <polygon points="472,570.9375 462,574.9375 472,578.9375 468,574.9375" stroke-width="1" style="fill:#181818;stroke:#181818;" />
+    <line x1="466" y1="574.9375" x2="1094.5" y2="574.9375" stroke-width="1" style="stroke:#181818;" />
+    <text x="478" y="570.0811" textLength="214" lengthAdjust="spacing" font-family="sans-serif" font-size="13" style="fill:black;">Collects blood specimen from patient</text>
   </g>
 </svg>

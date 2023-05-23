@@ -44,9 +44,9 @@ Use case covers admission, patient prep, examination, post processing and report
 
 2. Physician places the order in the EHR for "Janet Smith"
 
-3.  John Smith arrives at an outpatient facility with an appointment.
+3. John Smith arrives at an outpatient facility with an appointment.
 
-4.  Patient history, social history, medical history has already been captured and are available in the EHR under "Janet Smith".
+4. Patient history, social history, medical history has already been captured and are available in the EHR under "Janet Smith".
 
 5.  Prior exams for comparison are retrieved based on rules established by the radiology department, using the name "Janet Smith" (e.g., body region, patient ID, type of exam).
 

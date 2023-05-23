@@ -1,0 +1,24 @@
+@startuml
+actor Physician as dr
+actor Patient as pt
+actor EHR
+actor "Lab System" as ls
+actor "Lab Technician" as lt
+
+dr->pt : Reviews anatomic inventory and notes patient has a prostate
+EHR->dr : Julie's age is over 50, has an antomic invenory with prostate present, \n and no prostate exam or PSA value in the past 10 years. Alerts physician \n that a prostate exam and/or a PSA should be considered for the patient
+dr->pt : Reviews reccomendation with patient
+pt->dr : Patient agrees
+dr->pt : Collects current mediciation list from patient
+pt->dr: Informs Dr. Jones that she is receiving an estrogenic therapy regimen
+dr->EHR : Creates entry that patient is taking an estrogenic therapy regimen
+pt->dr : Examines patient prostate and notes a nodule on the prostate
+pt->dr : Discusses finding with patient. Recommends ordering a PSA
+pt->dr : Patient agrees
+dr->EHR : Places lab order for PSA quantitative test \n Enters SPCU value as 'Male typical' with a comment that the patient has a prostate
+EHR->ls : Transmits lab order for PSA quantitative test, SPCU value as 'Male typical' \n and comment that the patient has a prostate
+pt->lt : Checks in with Lab department as 'Julie Smith'
+lt->pt : Collects blood specimen from patient 
+
+
+@enduml
