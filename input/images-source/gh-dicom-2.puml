@@ -8,7 +8,7 @@ participant "PET/CT Modality" as pet
 participant "EHR" as EHR
 participant "Image Manager/Archive \n DSS/Order Filler (RIS/PACS)" as PACS
 participant "Dose Info Reporter" as dose
-participant "AI Task Performer" as ai
+participant "Analysis Task Performer" as ai
 
 group Precondition(s)
 referring -> EHR : place order
@@ -35,6 +35,7 @@ rnote right #motivation
 *Local procedure deferrs updates for in-process studies.
 *Study proceeds using personal communication with staff about pending updates.
 *Updates will be applied when study is complete.
+*See IHE Radiology Technical Framework, Volume 1, 34.4.2.2 Use Case #2: Patient Update
 end note
 clerk -> tech : notify of patient arrival and new information
 activate tech #whitesmoke

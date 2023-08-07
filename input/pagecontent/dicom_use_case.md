@@ -1,3 +1,10 @@
+<!-- Updates based on Jira tickets 
+Date             Jira ticket        Updated by                   Comment
+2023-06-16       OTHER-2411         Joanie Harper                Corrected Example 01: Imaging Order per the Jira ticket https://jira.hl7.org/browse/OTHER-2411
+2023-06-16       OTHER-2488         Joanie Harper                Fixed spelling of narrative per the Jira ticket https://jira.hl7.org/browse/OTHER-2488
+2023-08-02		All Usecase updates	Rob M				Updated the entirew document using DICOm file from Steven N. Issues above are included.
+
+-->
 ### Introduction
 
 This use case illustrates DICOM Sex and Gender encoding, including: admission, patient prep, examination, post processing and reporting for a PET/CT examination order. A patient with EHR Sex Parameter for Clinical Use (SPCU) of “Female-typical” and an EHR Gender Identity of “Identifies a male gender” checks-in for a PET/CT examination. The examination is performed, the patient’s demographics are updated, and the report is delivered.
@@ -10,9 +17,9 @@ The DICOM (Digital Imaging and COmmunications in Medicine) Standard attributes i
 
 #### People
 
-1.  Patient (John Smith) - whose previous records are for studies performed when his EHR Gender Identity was “Identifies as female gender”. 
+1.  Patient (John Smith) - whose previous records are for studies performed when his EHR Gender Identity was “Identifies as female gender”.
 
-2. Referring Physician
+2.  Referring Physician
 
 3.  Facility Clerk - admits patient, utilizes the Radiology Information System (RIS)
 
@@ -42,11 +49,11 @@ Use case covers admission, patient prep, examination, post processing and report
 
 1.  John Smith is registered in the hospital record system under the name “Janet Smith”.
 
-2. Physician places the order in the EHR for "Janet Smith"
+2.  Physician places the order in the EHR for "Janet Smith"
 
-3. John Smith arrives at an outpatient facility with an appointment.
+3.  John Smith arrives at an outpatient facility with an appointment.
 
-4. Patient history, social history, medical history has already been captured and are available in the EHR under "Janet Smith".
+4.  Patient history, social history, medical history has already been captured and are available in the EHR under "Janet Smith".
 
 5.  Prior exams for comparison are retrieved based on rules established by the radiology department, using the name "Janet Smith" (e.g., body region, patient ID, type of exam).
 
@@ -66,9 +73,9 @@ Use case covers admission, patient prep, examination, post processing and report
 ### Workflow/Storyboard:
 
 Note: IHE transactions are noted in brackets
-<div>
-{%include gh-dicom-2.puml%}
-</div>
+
+
+<img style="vertical-align: top;" src="gh-dicom-2.svg" width="100%" /> 
 
 Figure 1 Workflow Storyboard
 
@@ -78,7 +85,7 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 1.  When the patient arrives at the waiting room for a PET/CT examination he announces himself as “John”.
 
-2.  The clerk asks “John Williams?”, seeing a John Williams in the schedule. 
+2.  The clerk asks “John Williams?”, seeing a John Williams in the schedule. 
 
 3.  Patient: “No, Smith”.
 
@@ -86,7 +93,7 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 5.  Smith: “month, day, year”
 
-6.  The clerk performs a date-of-birth based lookup and finds a schedule entry for Janet Smith, with Patient’s Sex “F” and Patient’s Gender “M”, and with a Patient Names to Use “John Smith”. Sex Comment contains “Hormonal treatment, use affirmed gender Creatine reference ranges\[1\]”.
+6.  The clerk performs a date-of-birth based lookup and finds a schedule entry for Janet Smith, with Patient’s Sex “F” and Patient’s Gender “M”, and with a Patient Names to Use “John Smith”. Sex Comment contains “Hormonal treatment, use affirmed gender Creatinine reference ranges\[1\]”.
 
 7.  The clerk confirms that the birth dates match, in accordance with local policies, and checks in the patient.
 
@@ -100,7 +107,7 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 #### Patient Preparation
 
-1.  The technologist checks their schedule for John, and finds the order for “Janet Smith”, Patient’s Sex “F” and Patient’s Gender “M”, and with a Patient Names to Use “John Smith”. Sex Comment contains “Hormonal treatment, use affirmed gender Creatine reference ranges”.
+1.  The technologist checks their schedule for John, and finds the order for “Janet Smith”, Patient’s Sex “F” and Patient’s Gender “M”, and with a Patient Names to Use “John Smith”. Sex Comment contains “Hormonal treatment, use affirmed gender Creatinine reference ranges”.
 
 2.  The technologist greets the patient as “John” and reconfirms birthdate.
 
@@ -110,9 +117,9 @@ In this scenario, the patient initiates the discussion with the clerk.
 
 5.  The technologist explains the procedure to the patient and answers any questions the patient may have. 
 
-6.  Since the protocol calls for a contrast-enhanced CT, the technologist reviews the most recent eGFR, bun and creatine.
+6.  Since the protocol calls for a contrast-enhanced CT, the technologist reviews the most recent eGFR, BUN and Creatinine.
 
-7.  The technologist confers with the radiologist to discuss acceptable lab values for safe contrast administration, given the Sex Comment, as well as the patient’s GFR, bun and creatine.
+7.  The technologist confers with the radiologist to discuss acceptable lab values for safe contrast administration, given the Sex Comment, as well as the patient’s GFR, BUN and Creatinine.
 
 8.  The radiologist notes that the provided SPCU of Female, is not consistent with the SPCU Comment and calls the ordering physician to confirm.
 
@@ -190,7 +197,7 @@ These map to DICOM Modality Worklist as follows:
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
-| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
 |                                      | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 |                                      |                               |             |    | --ITEM 2--                                                        |
@@ -232,7 +239,7 @@ These map to DICOM Modality Worklist as follows:
 | GSC-4-1                              | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
 | GSC-4-3                              | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | GSC-4-2                              | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
-| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
+| GSC-8                                | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
 | GSC-5-1                              | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 |                                      | Sex Parameter for Clinical Use Sequence| (0010,xxx2) | SQ |                                                          |
 |                                      |                               |             |    | --ITEM 2--                                                        |
@@ -252,7 +259,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 
 | FHIR attribute                                | Attribute Name                | TAG         | VR | Value                                                             |
 | ----------------------------------------------| ----------------------------- | ----------- | -- | ----------------------------------------------------------------- |
-| Patient.name [use=official]                      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                    |
+| Patient.name [use=official]                      | Patient's Name                | (0010,0010) | PN | Smith\^John^^^                                                 |
 | Patient.gender                                | Patient's Sex                 | (0010,0040) | CS | F                                                                 |
 | Patient.extension [PGenderIdentity]           | Gender Identity Sequence      | (0010,xxxx) | SQ |                                                                   |
 |                                               | \>Gender Identity Code Sequence        | (0010,xxx4) | SQ |                                                          |
@@ -266,7 +273,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [value code]         | \>\>Code Value                | (0008,0100) | SH | Sup233-02                                                         |
 | serviceRequest.extension [value system]       | \>\>Coding Scheme Designator  | (0008,0102) | SH | DCM                                                               |
 | serviceRequest.extension [value display]      | \>\>Code Meaning              | (0008,0104) | LO | Male typical parameter                                            |
-| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Creatine reference ranges |
+| serviceRequest.extension [comment]            | \>SPCU Comment                | (0010,xxx1) | LT | Hormonal treatment, use affirmed gender Cr reference ranges       |
 |                                               | \>Validity Period sequence    | (0010,xxx5) | SQ |                                                                   |
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 20220715090000                                                    |
 | serviceRequest.extension [supportingInfo reference] | \>SPCU Reference        | (0010,xx10) | UR | https://doi.org/10.1210/jendso/bvab048.1607                       | 
@@ -280,7 +287,7 @@ The patient is referenced as the subject of [DiagnosticReport](#reporting), Docu
 | serviceRequest.extension [period start]       | \>\>Start DateTime            | (0010,xxx6) | DT | 19780328000000                                                    |
 | serviceRequest.extension [period end]         | \>\>Stop DateTime             | (0010,xxx7) | DT | 20220715090000                                                    |
 |                                               | Person Names to Use Sequence  | (0010,xxx3) | SQ |                                                                   |
-| Patient.name[use=usual]                    | \>Name to Use                 | (0010,xx12) | LT | John Smith                                                        |
+| Patient.name[use=usual]                       | \>Name to Use                 | (0010,xx12) | LT | John Smith                                                        |
 
 
 #### Example 04: Imaging Report
